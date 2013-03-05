@@ -5,8 +5,17 @@ import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
 import models.Task
+import play.Logger
+import scala.util.Properties
+
+
+
+
 
 object Application extends Controller {
+	
+   
+
   
   def index = Action {
 	  Redirect(routes.Application.tasks)
@@ -20,14 +29,14 @@ object Application extends Controller {
     taskForm.bindFromRequest.fold(
       errors => BadRequest(views.html.index(Task.all(), errors)),
       label => {
-        Task.create(label)
+        // Task.create(label)
         Redirect(routes.Application.tasks)
       }
     )
   }
   
   def deleteTask(id: Long) = Action {
-    Task.delete(id)
+    // Task.delete(id)
     Redirect(routes.Application.tasks)
   }
   

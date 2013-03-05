@@ -6,10 +6,13 @@ object ApplicationBuild extends Build {
 
   val appName         = "play-test-app"
   val appVersion      = "1.0-SNAPSHOT"
+  val casbah = "org.mongodb" %% "casbah" % "2.5.0"
+  val postgres = "postgresql" % "postgresql" % "8.4-702.jdbc4"
 
   val appDependencies = Seq(
     // Add your project dependencies here,
-    "postgresql" % "postgresql" % "8.4-702.jdbc4",
+    postgres,
+	casbah,
     jdbc,
     anorm
   )
