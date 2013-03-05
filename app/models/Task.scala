@@ -42,10 +42,11 @@ object Task {
 	
 
 	def all():List[Task] = { db.find().toList.asInstanceOf[List[Task]] }
-	  // def create(task: Task):List[Task] = { db.save(task.asInstanceOf[List[Task]]) }
-	  // def findAll() = { db.find().toArray }
-  	def delete(id: Long) = {
-  		db.findOne(id)
+	  def create(task: Task) = {MongoDBObject("id" -> task.id,
+     |                            "name" -> task.name) }
+
+  	def delete(id: Long):Task = {
+  		db.findOne(id).asInstanceOf(Task)
 		}
 	  
 
