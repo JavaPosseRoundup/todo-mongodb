@@ -29,7 +29,7 @@ object Application extends Controller {
     taskForm.bindFromRequest.fold(
       errors => BadRequest(views.html.index(Task.all(), errors)),
       label => {
-        // Task.create(label)
+        Task.create(Task(1, label))
         Redirect(routes.Application.tasks)
       }
     )

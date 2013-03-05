@@ -40,14 +40,17 @@ object Task {
 	
 	val db = mongoConnection
 	
+	Logger.info(db.find().toList.asInstanceOf[List[Task]].toString )
 
 	def all():List[Task] = { db.find().toList.asInstanceOf[List[Task]] }
-	  def create(task: Task) = {MongoDBObject("id" -> task.id,
-     |                            "name" -> task.name) }
+	// def all() = { db.find().toList }
+    // def create(task: Task) = db.save({MongoDBObject("id" -> task.id,
+                               // "label" -> task.label) })
+	def create(task: Task) = db.save(task) //does not work/compile
 
-  	def delete(id: Long):Task = {
-  		db.findOne(id).asInstanceOf(Task)
-		}
+		//   	def delete(id: Long):Task = {
+		//   		db.findOne(id).asInstanceOf(Task)
+		// }
 	  
 
 	
