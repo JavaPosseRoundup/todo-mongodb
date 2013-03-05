@@ -44,9 +44,8 @@ object Task {
 
 	def all():List[Task] = { db.find().toList.asInstanceOf[List[Task]] }
 	// def all() = { db.find().toList }
-    // def create(task: Task) = db.save({MongoDBObject("id" -> task.id,
-                               // "label" -> task.label) })
-	def create(task: Task) = db.save(task) //does not work/compile
+    def create(task: Task) = db.save(new MongoDBObject(task))
+	// def create(task: Task) = db.save(task) //does not work/compile
 
 		//   	def delete(id: Long):Task = {
 		//   		db.findOne(id).asInstanceOf(Task)
